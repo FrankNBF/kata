@@ -2,14 +2,14 @@
   <div class="card-header"> Available currencies </div>
   <div class="card-body">
     <div class = "row">
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12 col-12">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-6 col-6">
             <div class="md-form active-pink active-pink-2 mb-3 mt-0">
               <input class="form-control search-input" type="text" placeholder="Search" [(ngModel)]="filter">
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-6 col-6">
             Sort by : &nbsp;&nbsp;
             <button class = "chip lighten-4" (click)="sort('code')" [ngClass]="{ 'pink':key =='code'}">
               Code
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 text-right">
+      <div class="col-md-6 col-sm-12 col-12 text-right">
         <select class="browser-default custom-select" style="width: 150px;" [(ngModel)]="total">
           <option value="" disabled selected>Show</option>
           <option value="10">10</option>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="row text-center list-currencies">
-      <div class="col-md-2" *ngFor="let item of currencies | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: total, currentPage: p }">
+      <div class="col-md-2 col-sm-3 col-6" *ngFor="let item of currencies | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: total, currentPage: p }">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title"><a routerLink="/currency/{{item.code}}" class="text-danger">{{item.code}}</a></h4>
