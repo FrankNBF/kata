@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header"> View currency </div>
+  <div class="card-body">
+    <div class="row justify-content-around">
+      <div class="col-md-6">
+        <h3 class="font-weight-bold mb-3">{{currency.code}} <small style="float:right; opacity:0.6">{{currency.name}}</small></h3>
+        <div class="text-center" style="font-size: 150px; opacity: 0.5; color:#e91e63"> {{currency.symbol}} </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b> Name in plural</b>: {{currency.name_plural}}</li>
+          <li class="list-group-item"><b> Decimal digit</b>: {{currency.decimal_digits}}</li>
+          <li class="list-group-item"><b> Rounding </b>: {{currency.rounding}}</li>
+          <li class="list-group-item"><b> Native symbol</b>: {{currency.symbol_native}}</li>
+          <li class="list-group-item"><b> Current rate to Dollars</b>: {{history | json}} <br/> <small>This value come from http://apilayer.net/ API</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <a routerLink="/list" class="btn btn-sm btn-pink"> << Currencies list</a>
+  </div>
+</div>

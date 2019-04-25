@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header"> Available currencies </div>
+  <div class="card-body">
+    <div class = "row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="md-form active-pink active-pink-2 mb-3 mt-0">
+              <input class="form-control search-input" type="text" placeholder="Search" [(ngModel)]="filter">
+            </div>
+          </div>
+          <div class="col-md-6">
+            Sort by : &nbsp;&nbsp;
+            <button class = "chip lighten-4" (click)="sort('code')" [ngClass]="{ 'pink':key =='code'}">
+              Code
+            </button>
+            <button class = "chip lighten-4" (click)="sort('name')" [ngClass]="{ 'pink':key =='name'}">
+              Name
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <select class="browser-default custom-select" style="width: 150px;" [(ngModel)]="total">
+          <option value="" disabled selected>Show</option>
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row text-center list-currencies">
+      <div class="col-md-2" *ngFor="let item of currencies | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: total, currentPage: p }">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><a routerLink="/currency/{{item.code}}" class="text-danger">{{item.code}}</a></h4>
+            <p class="card-text"> <b>{{item.name}}</b> </p>
+            <p class="card-text" style="font-size: 30px; opacity: 0.5; min-height: 30px">{{item.symbol}}</p>
+            <a class="btn btn-sm btn-pink" routerLink="/currency/{{item.code}}">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <small>Total items {{currencies?.length}} divided on {{total}} items per pages</small>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+
